@@ -1,3 +1,162 @@
+# Booking Platform REST API
+
+## Project Overview
+
+This project is a REST API developed using NestJS and PostgreSQL for managing services and customer bookings.
+
+It was developed as part of the EN2H Software Engineer Intern Technical Assignment.
+
+The API provides:
+
+- User Registration
+- User Login using JWT Authentication
+- Service Management
+- Booking Management
+
+---
+
+## Technologies Used
+
+- NestJS
+- TypeScript
+- Prisma ORM
+- PostgreSQL
+- JWT Authentication
+- Passport
+- Bcrypt
+- Class Validator
+
+---
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone <your-github-repository-url>
+```
+
+Navigate to the project
+
+```bash
+cd booking-platform-api
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file and add:
+
+```env
+DATABASE_URL="postgresql://postgres:YOUR_PASSWORD@localhost:5432/booking_platform?schema=public"
+
+JWT_SECRET=yourSecretKey
+```
+
+---
+
+## Database Setup
+
+Run Prisma migration
+
+```bash
+npx prisma migrate dev
+```
+
+Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+---
+
+## Running the Application
+
+Development mode
+
+```bash
+npm run start:dev
+```
+
+Production mode
+
+```bash
+npm run build
+npm run start:prod
+```
+
+---
+
+## API Endpoints
+
+### Authentication
+
+POST /auth/register
+
+POST /auth/login
+
+### Services
+
+POST /services
+
+GET /services
+
+GET /services/:id
+
+PUT /services/:id
+
+DELETE /services/:id
+
+### Bookings
+
+POST /bookings
+
+GET /bookings
+
+GET /bookings/:id
+
+PATCH /bookings/:id/status
+
+PATCH /bookings/:id/cancel
+
+---
+
+## Business Rules
+
+- Booking must belong to an existing service.
+- Booking date cannot be in the past.
+- Cancelled bookings cannot be marked as completed.
+- Only authenticated users can manage services.
+- Customers can create bookings without authentication.
+
+---
+
+## Assumptions
+
+- PostgreSQL is installed locally.
+- Prisma migrations are executed before running the application.
+- JWT Secret is stored in the `.env` file.
+
+---
+
+## Future Improvements
+
+- Refresh Token Authentication
+- Pagination
+- Search Bookings
+- Swagger API Documentation
+- Unit Testing
+- Docker Support
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
