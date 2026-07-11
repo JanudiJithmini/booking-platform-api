@@ -19,6 +19,7 @@ export class AuthService {
     private usersService: UsersService,
     private jwtService: JwtService,
   ) {}
+  // Register a new user
   async register(registerDto: RegisterDto) {
 
   const { name, email, password } = registerDto;
@@ -32,7 +33,7 @@ export class AuthService {
       );
   }
 
- 
+// Hash the password before saving
 const hashedPassword =
     await bcrypt.hash(password,10);
 
@@ -49,6 +50,7 @@ const hashedPassword =
     return user;
 
   }
+  // Authenticate user and generate JWT
   async login(loginDto: LoginDto){
 
     const { email,password } = loginDto;
