@@ -10,10 +10,11 @@ import { UsersModule } from '../users/users.module';
 
 @Module({
   imports: [
+    // Import UsersModule to access user-related services
     UsersModule,
-
+    // Enable Passport authentication
     PassportModule,
-
+    // Configure JWT authentication
     JwtModule.register({
       secret: process.env.JWT_SECRET || 'mySecretKey',
       signOptions: {
@@ -21,9 +22,9 @@ import { UsersModule } from '../users/users.module';
       },
     }),
   ],
-
+  // Register authentication controller
   controllers: [AuthController],
-
+  // Register authentication service and JWT strategy
   providers: [
     AuthService,
     JwtStrategy,
